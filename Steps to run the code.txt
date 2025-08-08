@@ -1,0 +1,16 @@
+Steps to run the code 
+
+1. Open cmd
+
+2. enter the path of your project with this command "cd C:\Users\kesav_u5svehq\Downloads\bone_fracture_detection_main" and hit enter 
+
+3. enter the url to run the localhost 
+
+streamlit run app.py
+
+
+
+
+0.02 --- hybrid 
+
+o.17 yolov10, rcnn

@@ -1,0 +1,31 @@
+import os
+import shutil
+
+# Paths to your folders
+images_folder = 'images'
+labels_folder = 'labels'
+has_label_folder = 'has_label_images'
+no_label_folder = 'no_label_images'
+
+# Create directories if they don’t exist
+os.makedirs(has_label_folder, exist_ok=True)
+os.makedirs(no_label_folder, exist_ok=True)
+
+# Iterate over each label file
+for label_file in os.listdir(labels_folder):
+    # Get the corresponding image file
+    image_file = label_file.replace('.txt', '.jpg')  # Assuming images are in .jpg format
+    label_path = os.path.join(labels_folder, label_file)
+    image_path = os.path.join(images_folder, image_file)
+    
+    # Check if the image file exists
+    if not os.path.exists(image_path):
+        continue
+
+    # Check if the label file is empty or has content
+    if os.path.getsize(label_path) > 0:  # Label file is not empty
+        shutil.move(image_path, os.path.join(has_label_folder, image_file))
+    else:  # Label file is empty
+        shutil.move(image_path, os.path.join(no_label_folder, image_file))
+
+print("
